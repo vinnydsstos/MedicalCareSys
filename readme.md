@@ -2,152 +2,59 @@
 
 This is a very simple system which aims to create several API's using SpringBoot and execute some business logic related to healthcare system. 
 
-## Technologies
 
-Programming Languages:
-![Java](https://img.shields.io/badge/java-%23ED8B00.svg?style=for-the-badge&logo=java&logoColor=white)
+## :computer: System Overview
 
+This system manage have two main modules:
+1. Medical Care
+2. Sales
 
-Frameworks:
-![Spring](https://img.shields.io/badge/spring-%236DB33F.svg?style=for-the-badge&logo=spring&logoColor=white)
-
-Services: 
-![RabbitMQ](https://img.shields.io/badge/Rabbitmq-FF6600?style=for-the-badge&logo=rabbitmq&logoColor=white)
-
-Databases:
-![MySQL](https://img.shields.io/badge/mysql-%2300f.svg?style=for-the-badge&logo=mysql&logoColor=white)
-
-Infrastructure:
-![Docker](https://img.shields.io/badge/docker-%230db7ed.svg?style=for-the-badge&logo=docker&logoColor=white)
+#### Medical Care module
+![image](https://user-images.githubusercontent.com/13739735/198321076-5ef99371-dbdd-4608-972f-b847d7d50c7e.png)
 
 
-Other tools:
-![IntelliJ IDEA](https://img.shields.io/badge/IntelliJIDEA-000000.svg?style=for-the-badge&logo=intellij-idea&logoColor=white)
-![Apache Maven](https://img.shields.io/badge/Apache%20Maven-C71A36?style=for-the-badge&logo=Apache%20Maven&logoColor=white)
-Lombok
+#### Sales Module
+![image](https://user-images.githubusercontent.com/13739735/198321768-f3386db0-cf85-42e4-8116-fec5e470247c.png)
 
 
+It is important to mention that this system exchange messages using RabbitMQ to ensure quality. Queues are designed as it follows:
 
-## System Overview
+![image](https://user-images.githubusercontent.com/13739735/198322962-16304d43-c821-4677-8952-a10e8b5fcc82.png)
 
-This system manage four entitities: 
 
-1. customers
-2. products
-3. orders
-4. address
-5. deliveries
-
-These entities are composed by the following attributes:
-
-![image](https://user-images.githubusercontent.com/13739735/197055067-3f5a8b74-067d-409a-b9d4-a91718efe721.png)
 
 
 ## ⚙️ Development
 
-This system is currently under construction and will be developed iteratively following X sprints that are described as it follows:
+*Warn: This system is currently under construction and will be developed iteratively.*
 
 ### Sprint 01 - API building
 
-In this sprint, OrderSys will be configured as a maven project using start.spring.io using the following dependencies:
+In this sprint, we setup Dunimed application using docker to run RabbitMQ and MYSQL. Then, move forward creating a maven project using start.spring.io using the following dependencies:
 
 1. Spring Data JPA
 2. Spring Boot DevTools
-3. H2 Database
+3. MySQL connectors
 4. Spring for RabbitMQ
 5. Lombok
 
-Next, the following endpoints should be created:
-
-#### For Customers
-- GET - localhost:9000/cliente/lista - List all stored clients
-- GET - localhost:9000/cliente/{id} - Display client with such id
-- POST - localhost:9000/cliente/ - Add a client
-- PUT - localhost:9000/cliente/ - Update or add a client
-- DELETE - localhost:9000/cliente/{id} - delete client with such id
-
-#### For Products
-- GET - localhost:9000/produto/lista - List all stored products
-- GET - localhost:9000/produto/{id} - Display product with such id
-- POST - localhost:9000/produto/ - Add a product
-- PUT - localhost:9000/produto/ - Update or add a product
-- DELETE - localhost:9000/produto/{id} - delete product with such id
-
-#### For Orders
-- GET - localhost:9000/pedido/list - List all stored orders
-- GET - localhost:9000/pedido/{id} - Display order with such id
-- POST - localhost:9000/pedido/ - Add a order
-- PUT - localhost:9000/pedido/ - Update or add a order
-
-#### For Deliveries
-- GET - localhost:9000/entrega/lista - List all stored deliveries
-- GET - localhost:9000/entrega/{id} - Display delivery with such id
+The endpoints should be documented using swagger.
 
 
-For testing these end points, use the following payloads:
+## Technologies
 
-Client: 
-```json
-{
-  "idClient": 0,
-  "clientName": "Name Client"
-}
-```
+- ![Java](https://img.shields.io/badge/java-%23ED8B00.svg?style=for-the-badge&logo=java&logoColor=white)
+- ![Spring](https://img.shields.io/badge/spring-%236DB33F.svg?style=for-the-badge&logo=spring&logoColor=white)
+- ![RabbitMQ](https://img.shields.io/badge/Rabbitmq-FF6600?style=for-the-badge&logo=rabbitmq&logoColor=white)
+- ![MySQL](https://img.shields.io/badge/mysql-%2300f.svg?style=for-the-badge&logo=mysql&logoColor=white)
+- ![Docker](https://img.shields.io/badge/docker-%230db7ed.svg?style=for-the-badge&logo=docker&logoColor=white)
+- ![Swagger](https://img.shields.io/badge/-Swagger-%23Clojure?style=for-the-badge&logo=swagger&logoColor=white)
 
+## Testing
+- Mockito
+- JUnit
 
-Product: 
-```json
-{
-  "idProduct": 0,
-  "productName": "Name Product",
-  "productValue": "10.00"
-}
-```
-
-Order: 
-```json
-{
-    "client": {
-        "id": 1,
-        "name": "Vinição dos compíuter"
-    },
-    "products": [
-        {
-            "id": 1,
-            "name": "Casa de papel",
-            "value": 10.0
-        }
-    ],
-    "address": {
-        "street": "Serafim vieira dos santos",
-        "stablishmentNumber": 777,
-        "neighborhood": "Primavera 7",
-        "complement": "Apto 22",
-        "zipCode": "35825-000"
-    }
-}
-```
-
-Deliveries: 
-```json
-{
-    "status": "Entregue",
-    "deliveredIn": "1990-10-22",
-    "receiver": "Vanessa",
-    "idOrder": 1
-}
-```
-
-### Sprint 02 - RabbitMQ integration
-
-In this step, the RabbitMQ should be used to add and consume a queue.
-
-⚠️ this feature will be detailed soon
-
-
-### Sprint 03 - Docker
-
-In this step, a docker container should be created to run the application.
-
-⚠️ this feature will be detailed soon
+## Other tools:
+ ![IntelliJ IDEA](https://img.shields.io/badge/IntelliJIDEA-000000.svg?style=for-the-badge&logo=intellij-idea&logoColor=white)
+ ![Apache Maven](https://img.shields.io/badge/Apache%20Maven-C71A36?style=for-the-badge&logo=Apache%20Maven&logoColor=white)
 
