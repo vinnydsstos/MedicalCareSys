@@ -1,9 +1,11 @@
+server:
+  port: 9000
 spring:
   datasource:
-    driverClassName: com.mysql.jdbc.Driver
-    url: jdbc:mysql://localhost:3307/dunimed
+    driverClassName: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/dunimed?createDatabaseIfNotExist=true
     username: root
-    password:
+    password: 12345
   jpa:
     hibernate.ddl-auto: update
     generate-ddl: true
