@@ -10,8 +10,7 @@ This system manage have two main modules:
 2. Sales
 
 #### Medical Care module
-![image](https://user-images.githubusercontent.com/13739735/198321076-5ef99371-dbdd-4608-972f-b847d7d50c7e.png)
-
+![image](https://user-images.githubusercontent.com/13739735/199307899-43cffd39-af80-4c81-aa18-df3ae8092f83.png)
 
 #### Sales Module
 ![image](https://user-images.githubusercontent.com/13739735/198321768-f3386db0-cf85-42e4-8116-fec5e470247c.png)
