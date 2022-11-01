@@ -15,4 +15,7 @@ public class MedicalAppointmentDTORequest implements Serializable {
     private final String location;
     private final Date appointmentDate;
     private final Date returnDate;
+    private final Integer patient;
+    private final Integer doctor;
+
 }

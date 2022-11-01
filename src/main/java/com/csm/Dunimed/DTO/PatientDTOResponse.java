@@ -14,14 +14,16 @@ public class PatientDTOResponse implements Serializable {
     private final String gender;
     private final String email;
     private final String phone;
+    private final AddressDTOResponse address;
 
     public static PatientDTOResponse of(Patient p){
         return PatientDTOResponse.builder()
                 .id(p.getId())
-                .nome(p.getNome())
+                .nome(p.getName())
                 .email(p.getEmail())
                 .gender(p.getGender())
                 .phone(p.getPhone())
+                .address(AddressDTOResponse.of(p.getAddress()))
                 .build();
     }
 }

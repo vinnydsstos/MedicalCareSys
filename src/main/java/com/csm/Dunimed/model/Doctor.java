@@ -1,5 +1,7 @@
 package com.csm.Dunimed.model;
 
+import com.csm.Dunimed.DTO.DoctorDTORequest;
+import com.csm.Dunimed.DTO.DoctorDTOResponse;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -37,8 +39,22 @@ public class Doctor {
     @Column(name="ISSURGEON")
     private Boolean isSurgeon;
 
+
+
+
     @JsonIgnore
     @OneToMany(mappedBy = "doctor", cascade = CascadeType.ALL)
     List<MedicalAppointment> medicalAppointments;
 
+    public static Doctor of(DoctorDTORequest d) {
+       return Doctor.builder()
+                .id(d.getId())
+                .name(d.getName())
+                .email(d.getEmail())
+                .gender(d.getGender())
+                .phone(d.getPhone())
+                .medicalSpecialty(d.getMedicalSpecialty())
+                .isSurgeon(d.getIsSurgeon())
+                .build();
+    }
 }

@@ -1,5 +1,6 @@
 package com.csm.Dunimed.model;
 
+import com.csm.Dunimed.DTO.MedicalAppointmentDTORequest;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -34,7 +35,6 @@ public class MedicalAppointment
     @Temporal(TemporalType.TIMESTAMP)
     private Date returnDate;
 
-
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "FK_PATIENT", referencedColumnName = "ID",
             foreignKey = @ForeignKey(name = "FK_PATIENT_MEDICAL_APPOINTMENT"))
@@ -47,6 +47,18 @@ public class MedicalAppointment
 
     @OneToMany(mappedBy = "medicalAppointment")
     private List<Examination> examinations;
+
+    public static MedicalAppointment of(MedicalAppointmentDTORequest d){
+        return MedicalAppointment.builder()
+                .id(d.getId())
+                .status(d.getStatus())
+                .location(d.getLocation())
+                .appointmentDate(d.getAppointmentDate())
+                .returnDate(d.getReturnDate())
+                .patient(Patient.builder().id(d.getPatient()).build())
+                .doctor(Doctor.builder().id(d.getDoctor()).build())
+                .build();
+    }
 
 
 }

@@ -1,6 +1,9 @@
 server:
   port: 9000
 spring:
+  mvc:
+    pathmatch:
+      matching-strategy: ant_path_matcher
   datasource:
     driverClassName: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://localhost:3306/dunimed?createDatabaseIfNotExist=true

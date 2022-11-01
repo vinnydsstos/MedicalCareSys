@@ -1,5 +1,6 @@
 package com.csm.Dunimed.DTO;
 
+import com.csm.Dunimed.model.MedicalAppointment;
 import lombok.Data;
 
 import java.io.Serializable;
@@ -14,5 +15,6 @@ public class ExaminationDTORequest implements Serializable {
     private final String name;
     private final Date examDate;
     private final String technician;
+    private final Integer medicalAppointmentId;
 
 }

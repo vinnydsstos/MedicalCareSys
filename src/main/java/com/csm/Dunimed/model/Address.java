@@ -1,6 +1,9 @@
 package com.csm.Dunimed.model;
 
 
+import com.csm.Dunimed.DTO.AddressDTORequest;
+import com.csm.Dunimed.DTO.AddressDTOResponse;
+import com.csm.Dunimed.DTO.PatientDTORequest;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -37,6 +40,18 @@ public class Address {
 
     @Column(name="COMPLEMENT")
     private String complement;
+
+    public static Address of(AddressDTORequest p){
+        return Address.builder()
+                .id(p.getId())
+                .city(p.getCity())
+                .country(p.getCountry())
+                .complement(p.getComplement())
+                .number(p.getNumber())
+                .state(p.getState())
+                .street(p.getStreet())
+                .build();
+    }
 
 
 }

@@ -1,5 +1,7 @@
 package com.csm.Dunimed.model;
 
+import com.csm.Dunimed.DTO.ExaminationDTORequest;
+import com.csm.Dunimed.DTO.MedicalAppointmentDTORequest;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -34,6 +36,15 @@ public class Examination {
     private MedicalAppointment medicalAppointment;
 
 
-
-
+    public static Examination of(ExaminationDTORequest d) {
+        return Examination.builder()
+                .id(d.getId())
+                .name(d.getName())
+                .examDate(d.getExamDate())
+                .technician(d.getTechnician())
+                .medicalAppointment(MedicalAppointment
+                        .builder()
+                        .id(d.getMedicalAppointmentId()).build())
+                .build();
+    }
 }

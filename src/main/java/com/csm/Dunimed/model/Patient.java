@@ -17,19 +17,20 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 public class Patient {
+
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @Column(name="nome")
-    private String nome;
+    @Column(name="NAME")
+    private String name;
 
-    @Column(name="gender")
+    @Column(name="GENDER")
     private String gender;
 
-    @Column(name="email")
+    @Column(name="EMAIL")
     private String email;
 
-    @Column(name="phone")
+    @Column(name="PHONE")
     private String phone;
 
     @OneToOne(cascade = {CascadeType.ALL})
@@ -45,10 +46,11 @@ public class Patient {
     public static Patient of(PatientDTORequest p){
         return Patient.builder()
                 .id(p.getId())
-                .nome(p.getNome())
+                .name(p.getName())
                 .email(p.getEmail())
                 .phone(p.getPhone())
                 .gender(p.getGender())
+                .address(Address.of(p.getAddress()))
                 .build();
     }
 

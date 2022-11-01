@@ -1,5 +1,6 @@
 package com.csm.Dunimed.DTO;
 
+import com.csm.Dunimed.model.Address;
 import lombok.Data;
 
 import java.io.Serializable;
@@ -14,4 +15,5 @@ public class DoctorDTORequest implements Serializable {
     private final String phone;
     private final String medicalSpecialty;
     private final Boolean isSurgeon;
+
 }
