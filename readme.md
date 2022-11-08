@@ -10,15 +10,23 @@ This system manage have two main modules:
 2. Sales
 
 #### Medical Care module
-![image](https://user-images.githubusercontent.com/13739735/199307899-43cffd39-af80-4c81-aa18-df3ae8092f83.png)
+<div align="center">
+<img src="https://user-images.githubusercontent.com/13739735/199307899-43cffd39-af80-4c81-aa18-df3ae8092f83.png" width="500"/>
+<div>
 
 #### Sales Module
-![image](https://user-images.githubusercontent.com/13739735/198321768-f3386db0-cf85-42e4-8116-fec5e470247c.png)
+
+<div align="center">
+<img src="https://user-images.githubusercontent.com/13739735/198321768-f3386db0-cf85-42e4-8116-fec5e470247c.png" width="500"/>
+<div>
 
 
 It is important to mention that this system exchange messages using RabbitMQ to ensure quality. Queues are designed as it follows:
 
-![image](https://user-images.githubusercontent.com/13739735/198322962-16304d43-c821-4677-8952-a10e8b5fcc82.png)
+<div align="center">
+<img src="https://user-images.githubusercontent.com/13739735/198322962-16304d43-c821-4677-8952-a10e8b5fcc82.png" width="600"/>
+<div>
+
 
 
 ## ⚙️ Development
