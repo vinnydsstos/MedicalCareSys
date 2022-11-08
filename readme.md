@@ -1,4 +1,4 @@
-# Welcome to Dunimed! 
+# Welcome to MedicalCareSys! 
 
 This is a very simple system which aims to create several API's using SpringBoot and execute some business logic related to healthcare system. 
 
@@ -19,8 +19,6 @@ This system manage have two main modules:
 It is important to mention that this system exchange messages using RabbitMQ to ensure quality. Queues are designed as it follows:
 
 ![image](https://user-images.githubusercontent.com/13739735/198322962-16304d43-c821-4677-8952-a10e8b5fcc82.png)
-
-
 
 
 ## ⚙️ Development
