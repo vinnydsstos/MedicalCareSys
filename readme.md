@@ -6,7 +6,7 @@ This is a very simple system which aims to create several API's using SpringBoot
 ## :computer: System Overview
 
 This system manage have two main modules:
-1. Medical Care
+1. Medical Care - this module deals with doctors, patients, appointments and examinations
 2. Sales
 
 #### Medical Care module
