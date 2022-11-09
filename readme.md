@@ -7,7 +7,7 @@ This is a very simple system which aims to create several API's using SpringBoot
 
 This system manage have two main modules:
 1. Medical Care - this module deals with doctors, patients, appointments and examinations
-2. Sales
+2. Sales - this module deals with seller, channels, insurance
 
 #### Medical Care module
 <div align="center">
@@ -58,6 +58,7 @@ The endpoints should be documented using swagger.
 ## Testing
 - Mockito
 - JUnit
+- Postman (collections are available)
 
 ## Other tools:
  ![IntelliJ IDEA](https://img.shields.io/badge/IntelliJIDEA-000000.svg?style=for-the-badge&logo=intellij-idea&logoColor=white)
