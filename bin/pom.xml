@@ -9,9 +9,9 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.csm</groupId>
-	<artifactId>MedicalCareSys</artifactId>
+	<artifactId>Dunimed</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>MedicalCareSys</name>
+	<name>Dunimed</name>
 	<description>HealthCare System</description>
 	<properties>
 		<java.version>17</java.version>
