@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.persistence.PersistenceException;
 import java.util.List;
+import java.util.UUID;
 import java.util.stream.Collectors;
 
 @RestController
@@ -29,10 +30,11 @@ public class DoctorController {
     }
 
     @GetMapping("{id}")
-    public DoctorDTOResponse getDoctorById(@PathVariable Integer id){
-        return doctorRepository.findById(id)
-                .map(DoctorDTOResponse::of)
-                .orElseThrow(() -> new NotFoundException("Não encontrado"));
+    public DoctorDTOResponse getDoctorById(@PathVariable(value = "id") UUID id){
+          return doctorRepository.findById(id)
+                    .map(DoctorDTOResponse::of)
+                    .orElseThrow(() -> new NotFoundException("Não encontrado"));
+
     }
 
     @PostMapping
@@ -40,12 +42,13 @@ public class DoctorController {
         try {
             return DoctorDTOResponse.of(doctorRepository.save(Doctor.of(request)));
         } catch (Exception e) {
+            e.printStackTrace();
             throw new PersistenceException("Error saving the Doctor");
         }
     }
 
     @DeleteMapping("{id}")
-    public String deleteDoctor(@PathVariable Integer id){
+    public String deleteDoctor(@PathVariable UUID id){
         try {
 
             doctorRepository.deleteById(id);

@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.persistence.PersistenceException;
 import java.util.List;
+import java.util.UUID;
 import java.util.stream.Collectors;
 
 @RestController
@@ -36,7 +37,7 @@ public class MedicalAppointmentController {
     }
 
     @GetMapping("{id}")
-    public MedicalAppointmentDTOResponse getMedicalAppointmentByID(@PathVariable Integer id){
+    public MedicalAppointmentDTOResponse getMedicalAppointmentByID(@PathVariable UUID id){
         return appointmentRepository.findById(id)
                 .map(MedicalAppointmentDTOResponse::of)
                 .orElseThrow(() -> new NotFoundException("Não encontrado"));
@@ -61,7 +62,7 @@ public class MedicalAppointmentController {
 
 
     @DeleteMapping("{id}")
-    public String deleteMedicalAppointment(@PathVariable Integer id){
+    public String deleteMedicalAppointment(@PathVariable UUID id){
         try {
             appointmentRepository.deleteById(id);
             return "Sucesso";

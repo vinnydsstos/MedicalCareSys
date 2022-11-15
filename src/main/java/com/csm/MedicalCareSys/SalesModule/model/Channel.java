@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.util.List;
+import java.util.UUID;
 
 @Entity
 @Table(name = "CHANNEL")
@@ -15,8 +16,8 @@ import java.util.List;
 @NoArgsConstructor
 public class Channel {
 
-    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    @Id @GeneratedValue(strategy = GenerationType.AUTO)
+    private UUID id;
 
     @Column(name = "TYPE")
     private String type;

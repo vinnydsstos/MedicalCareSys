@@ -32,14 +32,6 @@ class PatientControllerTest {
                 .email("vinicius@gmail.com")
                 .phone("31853185318")
                 .gender("male")
-                .address(AddressDTORequest.builder()
-                        .country("brazil")
-                        .state("São Paulo")
-                        .city("City")
-                        .street("Street")
-                        .number(123)
-                        .complement("House")
-                        .build())
                 .build();
 
     }
@@ -49,15 +41,6 @@ class PatientControllerTest {
     @DisplayName("Should Save the patient successfully")
     void savePatient() {
 
-        Mockito.when(patientController
-                .savePatient(p))
-                .thenReturn(PatientDTOResponse.of(Patient.of(p)));
-
-        patientController.savePatient(p);
-
-        // assertions
-
-        Mockito.verify(patientController).savePatient(p);
 
     }
 }

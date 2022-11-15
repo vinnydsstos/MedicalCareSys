@@ -7,6 +7,7 @@ import lombok.Data;
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.Date;
+import java.util.UUID;
 
 /**
  * A DTO for the {@link MedicalAppointment} entity
@@ -14,7 +15,7 @@ import java.util.Date;
 @Data
 @Builder
 public class MedicalAppointmentDTOResponse implements Serializable {
-    private final Integer id;
+    private final UUID id;
     private final String status;
     private final String location;
     private final LocalDate appointmentDate;

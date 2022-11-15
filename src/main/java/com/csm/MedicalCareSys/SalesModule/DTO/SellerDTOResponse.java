@@ -5,6 +5,7 @@ import lombok.Builder;
 import lombok.Data;
 
 import java.io.Serializable;
+import java.util.UUID;
 
 /**
  * A DTO for the {@link com.csm.MedicalCareSys.SalesModule.model.Seller} entity
@@ -12,7 +13,7 @@ import java.io.Serializable;
 @Data
 @Builder
 public class SellerDTOResponse implements Serializable {
-    private final Integer id;
+    private final UUID id;
     private final String username;
     private final String password;
     private final String name;

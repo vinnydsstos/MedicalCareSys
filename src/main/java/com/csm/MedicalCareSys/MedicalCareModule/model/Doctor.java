@@ -9,6 +9,7 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.util.List;
+import java.util.UUID;
 
 @Entity
 @Table(name="DOCTOR")
@@ -17,8 +18,9 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 public class Doctor {
-    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+
+    @Id @GeneratedValue(strategy = GenerationType.AUTO)
+    private UUID id;
 
     @Column(name="NAME")
     private String name;

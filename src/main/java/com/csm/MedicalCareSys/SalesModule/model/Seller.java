@@ -5,6 +5,7 @@ import lombok.*;
 
 import javax.persistence.*;
 import java.util.List;
+import java.util.UUID;
 
 @Entity
 @Table(name = "SELLER")
@@ -15,8 +16,9 @@ import java.util.List;
 @NoArgsConstructor
 public class Seller {
 
-    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+
+    @Id @GeneratedValue(strategy = GenerationType.AUTO)
+    private UUID id;
 
     @Column(name="USERNAME")
     private String username;

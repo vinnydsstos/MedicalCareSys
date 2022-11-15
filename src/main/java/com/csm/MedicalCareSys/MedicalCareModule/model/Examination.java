@@ -10,6 +10,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 import javax.persistence.*;
 import java.time.LocalDate;
 import java.util.Date;
+import java.util.UUID;
 
 @Entity
 @Table(name="EXAMINATION")
@@ -18,8 +19,9 @@ import java.util.Date;
 @AllArgsConstructor
 @NoArgsConstructor
 public class Examination {
-    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+
+    @Id @GeneratedValue(strategy = GenerationType.AUTO)
+    private UUID id;
 
     @Column(name="NAME")
     private String name;

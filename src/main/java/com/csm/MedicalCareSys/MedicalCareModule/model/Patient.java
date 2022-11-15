@@ -9,6 +9,7 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.util.List;
+import java.util.UUID;
 
 @Entity
 @Table(name="PATIENT")
@@ -18,8 +19,9 @@ import java.util.List;
 @NoArgsConstructor
 public class Patient {
 
-    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+
+    @Id @GeneratedValue(strategy = GenerationType.AUTO)
+    private UUID id;
 
     @Column(name="NAME")
     private String name;
@@ -42,15 +44,16 @@ public class Patient {
     @OneToMany(mappedBy = "patient", cascade = CascadeType.ALL)
     List<MedicalAppointment> medicalAppointments;
 
-    public static Patient of(PatientDTORequest p){
+    public static Patient of(PatientDTORequest patient, Address adress){
         return Patient.builder()
-                .id(p.getId())
-                .name(p.getName())
-                .email(p.getEmail())
-                .phone(p.getPhone())
-                .gender(p.getGender())
-                .address(Address.of(p.getAddress()))
+                .id(patient.getId())
+                .name(patient.getName())
+                .email(patient.getEmail())
+                .phone(patient.getPhone())
+                .gender(patient.getGender())
+                .address(adress)
                 .build();
     }
+
 
 }

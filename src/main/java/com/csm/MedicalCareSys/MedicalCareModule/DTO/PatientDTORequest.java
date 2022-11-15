@@ -4,16 +4,17 @@ import lombok.Builder;
 import lombok.Data;
 
 import java.io.Serializable;
+import java.util.UUID;
 
 @Data
 @Builder
 public class PatientDTORequest implements Serializable {
-    private final Integer id;
+    private final UUID id;
     private final String name;
     private final String gender;
     private final String email;
     private final String phone;
-    private final AddressDTORequest address;
+    private final UUID address;
 
 
 }

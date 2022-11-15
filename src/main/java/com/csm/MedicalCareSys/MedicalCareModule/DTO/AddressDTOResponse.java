@@ -5,12 +5,13 @@ import lombok.Builder;
 import lombok.Data;
 
 import java.io.Serializable;
+import java.util.UUID;
 
 
 @Data
 @Builder
 public class AddressDTOResponse implements Serializable {
-    private final Integer id;
+    private final UUID id;
     private final String country;
     private final String state;
     private final String city;

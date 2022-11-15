@@ -8,6 +8,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.UUID;
 
 @Entity
 @Table(name = "ADDRESS")
@@ -17,9 +18,8 @@ import javax.persistence.*;
 @NoArgsConstructor
 public class Address {
 
-    @Column(name="ID")
-    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    @Id @GeneratedValue(strategy = GenerationType.AUTO)
+    private UUID id;
 
     @Column(name="COUNTRY")
     private String country;

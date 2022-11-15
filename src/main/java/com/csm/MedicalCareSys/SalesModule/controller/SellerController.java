@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.persistence.PersistenceException;
 import java.util.List;
+import java.util.UUID;
 import java.util.stream.Collectors;
 
 @RestController
@@ -33,7 +34,7 @@ public class SellerController {
     }
 
     @GetMapping("{id}")
-    public SellerDTOResponse getSellerById(@PathVariable Integer id){
+    public SellerDTOResponse getSellerById(@PathVariable UUID id){
         return sellerRepository.findById(id)
                 .map(SellerDTOResponse::of)
                 .orElseThrow(() -> new NotFoundException("Seller Not Found"));
@@ -49,7 +50,7 @@ public class SellerController {
     }
 
     @DeleteMapping("{id}")
-    public String deleteSeller(@PathVariable Integer id){
+    public String deleteSeller(@PathVariable UUID id){
         try {
 
             sellerRepository.deleteById(id);

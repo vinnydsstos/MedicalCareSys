@@ -6,6 +6,7 @@ import com.csm.MedicalCareSys.SalesModule.DTO.InsuranceDTORequest;
 import lombok.*;
 
 import javax.persistence.*;
+import java.util.UUID;
 
 @Entity
 @Table(name = "SELLER")
@@ -15,8 +16,9 @@ import javax.persistence.*;
 @AllArgsConstructor
 @NoArgsConstructor
 public class Insurance {
-    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+
+    @Id @GeneratedValue(strategy = GenerationType.AUTO)
+    private UUID id;
 
     @Column(name="COVERAGE")
     private String coverage;

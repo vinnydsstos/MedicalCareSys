@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.persistence.PersistenceException;
 import java.util.List;
+import java.util.UUID;
 import java.util.stream.Collectors;
 
 @RestController
@@ -33,7 +34,7 @@ public class InsuranceController {
     }
 
     @GetMapping("{id}")
-    public InsuranceDTOResponse getInsuranceById(@PathVariable Integer id){
+    public InsuranceDTOResponse getInsuranceById(@PathVariable UUID id){
         return insuranceRepository.findById(id)
                 .map(InsuranceDTOResponse::of)
                 .orElseThrow(() -> new NotFoundException("Seller Not Found"));
@@ -49,7 +50,7 @@ public class InsuranceController {
     }
 
     @DeleteMapping("{id}")
-    public String deleteInsurance(@PathVariable Integer id){
+    public String deleteInsurance(@PathVariable UUID id){
         try {
 
             insuranceRepository.deleteById(id);

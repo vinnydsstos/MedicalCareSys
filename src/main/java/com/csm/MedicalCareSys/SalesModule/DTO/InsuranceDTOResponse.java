@@ -6,6 +6,7 @@ import lombok.Builder;
 import lombok.Data;
 
 import java.io.Serializable;
+import java.util.UUID;
 
 /**
  * A DTO for the {@link com.csm.MedicalCareSys.SalesModule.model.Insurance} entity
@@ -13,7 +14,7 @@ import java.io.Serializable;
 @Data
 @Builder
 public class InsuranceDTOResponse implements Serializable {
-    private final Integer id;
+    private final UUID id;
     private final String coverage;
     private final Double monthValue;
     private final Boolean status;

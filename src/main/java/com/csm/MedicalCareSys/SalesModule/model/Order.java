@@ -9,6 +9,7 @@ import org.springframework.lang.Nullable;
 import javax.persistence.*;
 import java.time.LocalDate;
 import java.util.Date;
+import java.util.UUID;
 
 @Entity
 @Table(name = "ORDERS")
@@ -19,8 +20,9 @@ import java.util.Date;
 @NoArgsConstructor
 public class Order {
 
-    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+
+    @Id @GeneratedValue(strategy = GenerationType.AUTO)
+    private UUID id;
 
     @Column(name = "SALE_DATE")
     @DateTimeFormat(pattern = "yyyy-MM-dd")

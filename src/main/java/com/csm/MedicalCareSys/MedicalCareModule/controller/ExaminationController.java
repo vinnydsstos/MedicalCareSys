@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.persistence.PersistenceException;
 import java.util.List;
+import java.util.UUID;
 import java.util.stream.Collectors;
 
 @RestController
@@ -34,7 +35,7 @@ public class ExaminationController {
     }
 
     @GetMapping("{id}")
-    public ExaminationDTOResponse getExaminationById(@PathVariable Integer id){
+    public ExaminationDTOResponse getExaminationById(@PathVariable UUID id){
         return examinationRepository.findById(id)
                 .map(ExaminationDTOResponse::of)
                 .orElseThrow(() -> new NotFoundException("Não encontrado"));
@@ -54,7 +55,7 @@ public class ExaminationController {
     }
 
     @DeleteMapping("{id}")
-    public String deleteExamination(@PathVariable Integer id){
+    public String deleteExamination(@PathVariable UUID id){
         try {
 
             examinationRepository.deleteById(id);

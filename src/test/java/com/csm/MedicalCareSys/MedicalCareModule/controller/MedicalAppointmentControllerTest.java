@@ -1,4 +1,4 @@
-package src.test.java.com.csm.MedicalCareSys.MedicalCareModule.controller;
+package com.csm.MedicalCareSys.MedicalCareModule.controller;
 
 import org.junit.jupiter.api.Test;
 

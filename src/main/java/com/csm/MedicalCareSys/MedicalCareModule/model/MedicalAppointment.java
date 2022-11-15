@@ -12,6 +12,7 @@ import javax.persistence.*;
 import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
+import java.util.UUID;
 
 @Entity
 @Table(name="MEDICALAPPOINTMENT")
@@ -21,8 +22,9 @@ import java.util.List;
 @NoArgsConstructor
 public class MedicalAppointment
 {
-    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+
+    @Id @GeneratedValue(strategy = GenerationType.AUTO)
+    private UUID id;
 
     @Column(name="STATUS")
     private String status;
