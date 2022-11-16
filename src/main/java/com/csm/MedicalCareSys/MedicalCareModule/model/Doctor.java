@@ -2,10 +2,7 @@ package com.csm.MedicalCareSys.MedicalCareModule.model;
 
 import com.csm.MedicalCareSys.MedicalCareModule.DTO.DoctorDTORequest;
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.*;
 import java.util.List;
@@ -14,7 +11,8 @@ import java.util.UUID;
 @Entity
 @Table(name="DOCTOR")
 @Builder
-@Data
+@Getter
+@Setter
 @AllArgsConstructor
 @NoArgsConstructor
 public class Doctor {

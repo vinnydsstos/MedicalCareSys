@@ -1,10 +1,7 @@
 package com.csm.MedicalCareSys.MedicalCareModule.model;
 
 import com.csm.MedicalCareSys.MedicalCareModule.DTO.ExaminationDTORequest;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
@@ -15,7 +12,8 @@ import java.util.UUID;
 @Entity
 @Table(name="EXAMINATION")
 @Builder
-@Data
+@Getter
+@Setter
 @AllArgsConstructor
 @NoArgsConstructor
 public class Examination {

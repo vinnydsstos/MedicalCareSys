@@ -7,6 +7,7 @@ import com.csm.MedicalCareSys.MedicalCareModule.repository.PatientRepository;
 import com.csm.MedicalCareSys.Exceptions.NotFoundException;
 import com.csm.MedicalCareSys.MedicalCareModule.repository.DoctorRepository;
 import com.csm.MedicalCareSys.MedicalCareModule.repository.MedicalAppointmentRepository;
+import com.csm.MedicalCareSys.MedicalCareModule.service.MedicalAppointmentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -22,11 +23,10 @@ public class MedicalAppointmentController {
     @Autowired
     private MedicalAppointmentRepository appointmentRepository;
 
-    @Autowired
-    private PatientRepository patientRepository;
+
 
     @Autowired
-    private DoctorRepository doctorRepository;
+    private MedicalAppointmentService medicalAppointmentService;
 
     @GetMapping("list")
     public List<MedicalAppointmentDTOResponse> getAllMedicalAppointment(){
@@ -40,21 +40,17 @@ public class MedicalAppointmentController {
     public MedicalAppointmentDTOResponse getMedicalAppointmentByID(@PathVariable UUID id){
         return appointmentRepository.findById(id)
                 .map(MedicalAppointmentDTOResponse::of)
-                .orElseThrow(() -> new NotFoundException("Não encontrado"));
+                .orElseThrow(() -> new NotFoundException("Not found"));
     }
 
 
     @PostMapping
     public MedicalAppointmentDTOResponse SaveMedicalAppointment(@RequestBody MedicalAppointmentDTORequest request) {
         try {
-            MedicalAppointment ma = MedicalAppointment.of(request);
-            ma.setDoctor(doctorRepository.findById(request.getDoctor())
-                    .orElseThrow(() -> new NotFoundException("Doctor Not Found")));
-             ma.setPatient(patientRepository.findById(request.getPatient())
-                    .orElseThrow(()-> new NotFoundException("Patient Not Found")));
+            MedicalAppointment appointment = medicalAppointmentService.populate(request);
             return MedicalAppointmentDTOResponse
                     .of(appointmentRepository
-                            .save(ma));
+                            .save(appointment));
         } catch (Exception e) {
             throw new PersistenceException("Error saving the Medical Appointment");
         }
@@ -62,10 +58,10 @@ public class MedicalAppointmentController {
 
 
     @DeleteMapping("{id}")
-    public String deleteMedicalAppointment(@PathVariable UUID id){
+    public String deleteMedicalAppointment(@PathVariable(value = "id") UUID id){
         try {
             appointmentRepository.deleteById(id);
-            return "Sucesso";
+            return "Success";
         }catch (Exception e){
             e.printStackTrace();
             throw new PersistenceException("Error deleting the medical appointment");

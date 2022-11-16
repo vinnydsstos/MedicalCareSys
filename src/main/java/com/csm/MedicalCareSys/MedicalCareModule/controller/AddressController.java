@@ -35,7 +35,7 @@ public class AddressController {
     }
 
     @GetMapping("{id}")
-    public AddressDTOResponse getAddressByID(@PathVariable UUID id){
+    public AddressDTOResponse getAddressByID(@PathVariable(value = "id") UUID id){
         return addressRepository.findById(id)
                 .map(AddressDTOResponse::of)
                 .orElseThrow(() -> new NotFoundException("Patient Not Found"));

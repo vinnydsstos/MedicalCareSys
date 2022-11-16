@@ -2,18 +2,16 @@ package com.csm.MedicalCareSys.MedicalCareModule.model;
 
 
 import com.csm.MedicalCareSys.MedicalCareModule.DTO.AddressDTORequest;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.*;
 import java.util.UUID;
 
 @Entity
 @Table(name = "ADDRESS")
-@Data
 @Builder
+@Getter
+@Setter
 @AllArgsConstructor
 @NoArgsConstructor
 public class Address {
@@ -40,7 +38,7 @@ public class Address {
     private String complement;
 
 
-    @OneToOne(cascade = CascadeType.ALL, mappedBy = "address")
+    @OneToOne(cascade = CascadeType.ALL, mappedBy = "address", orphanRemoval = true)
     private Patient patient;
 
     public static Address of(AddressDTORequest p){

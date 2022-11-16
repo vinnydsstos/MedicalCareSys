@@ -2,10 +2,7 @@ package com.csm.MedicalCareSys.MedicalCareModule.model;
 
 import com.csm.MedicalCareSys.MedicalCareModule.DTO.MedicalAppointmentDTORequest;
 import com.csm.MedicalCareSys.MedicalCareModule.DTO.MedicalAppointmentDTORequest;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
@@ -16,7 +13,8 @@ import java.util.UUID;
 
 @Entity
 @Table(name="MEDICALAPPOINTMENT")
-@Data
+@Getter
+@Setter
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
@@ -40,12 +38,12 @@ public class MedicalAppointment
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate returnDate;
 
-    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @ManyToOne(optional = true, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinColumn(name = "FK_PATIENT", referencedColumnName = "ID",
             foreignKey = @ForeignKey(name = "FK_PATIENT_MEDICAL_APPOINTMENT"))
     private Patient patient;
 
-    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @ManyToOne(optional = true, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinColumn(name = "FK_DOCTOR", referencedColumnName = "ID",
             foreignKey = @ForeignKey(name = "FK_DOCTOR_MEDICAL_APPOINTMENT"))
     private Doctor doctor;

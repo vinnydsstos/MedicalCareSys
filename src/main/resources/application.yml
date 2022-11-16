@@ -5,7 +5,7 @@ spring:
     pathmatch:
       matching-strategy: ant_path_matcher
   datasource:
-    url: jdbc:postgresql://localhost:5432/medicalcaresys
+    url: jdbc:postgresql://localhost:5432/MedicalCareSys
     username: postgres
     password: 12345
   jpa:
@@ -15,3 +15,6 @@ spring:
     properties:
       hibernate:
         dialect: org.hibernate.dialect.PostgreSQLDialect
+        event:
+          merge:
+            entity_copy_observer: allow

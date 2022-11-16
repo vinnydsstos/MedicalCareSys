@@ -33,7 +33,7 @@ public class DoctorController {
     public DoctorDTOResponse getDoctorById(@PathVariable(value = "id") UUID id){
           return doctorRepository.findById(id)
                     .map(DoctorDTOResponse::of)
-                    .orElseThrow(() -> new NotFoundException("Não encontrado"));
+                    .orElseThrow(() -> new NotFoundException("Not found"));
 
     }
 
@@ -52,9 +52,9 @@ public class DoctorController {
         try {
 
             doctorRepository.deleteById(id);
-            return "Sucesso";
+            return "Success";
         }catch (Exception e){
-            throw new PersistenceException("Erro ao deletar o paciente");
+            throw new PersistenceException("Error deleting the doctor");
         }
     }
 

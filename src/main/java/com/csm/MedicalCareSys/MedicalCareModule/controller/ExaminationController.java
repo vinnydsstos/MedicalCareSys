@@ -38,7 +38,7 @@ public class ExaminationController {
     public ExaminationDTOResponse getExaminationById(@PathVariable UUID id){
         return examinationRepository.findById(id)
                 .map(ExaminationDTOResponse::of)
-                .orElseThrow(() -> new NotFoundException("Não encontrado"));
+                .orElseThrow(() -> new NotFoundException("Not Found"));
     }
 
     @PostMapping

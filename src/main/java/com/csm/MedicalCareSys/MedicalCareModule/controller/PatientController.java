@@ -53,8 +53,10 @@ public class PatientController {
     public PatientDTOResponse updatePatient(@RequestBody PatientDTORequest request) {
         try {
             Patient toSave = patientService.populate(request);
+            System.out.println(toSave);
             return PatientDTOResponse.of(patientRepository.save(toSave));
         } catch (Exception e) {
+            e.printStackTrace();
             throw new PersistenceException("Error saving the Patient");
         }
     }
@@ -63,9 +65,9 @@ public class PatientController {
     public String deletePatient(@PathVariable UUID id){
         try {
             patientRepository.deleteById(id);
-            return "Sucesso";
+            return "Success";
         }catch (Exception e){
-            throw new PersistenceException("Erro ao deletar o paciente");
+            throw new PersistenceException("Error deleting the patient");
         }
     }
 
