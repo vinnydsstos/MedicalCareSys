@@ -2,6 +2,7 @@ package com.csm.MedicalCareSys.SalesModule.model;
 
 import com.csm.MedicalCareSys.MedicalCareModule.model.Patient;
 import com.csm.MedicalCareSys.SalesModule.DTO.OrderDTORequest;
+import com.csm.MedicalCareSys.SalesModule.ENUM.Channel;
 import lombok.*;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.lang.Nullable;
@@ -28,15 +29,17 @@ public class Order {
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate saleDate;
 
+
+    @Column(name = "CHANNEL")
+    @Enumerated(EnumType.STRING)
+    private Channel channel;
+
     @OneToOne
     @JoinColumn(name = "FK_PATIENT", referencedColumnName = "ID",
             foreignKey = @ForeignKey(name = "FK_PATIENT"))
     private Patient patient;
 
-    @ManyToOne
-    @JoinColumn(name = "FK_CHANNEL", referencedColumnName = "ID",
-    foreignKey = @ForeignKey(name = "FK_CHANNEL"))
-    private Channel channel;
+
 
     @ManyToOne
     @JoinColumn(name = "FK_SELLER", referencedColumnName = "ID", foreignKey = @ForeignKey(name = "FK_SELLER"))
@@ -53,7 +56,7 @@ public class Order {
                 .id(d.getId())
                 .saleDate(d.getSaleDate())
                 .patient(Patient.builder().id(d.getPatient()).build())
-                .channel(Channel.builder().type(d.getChannel()).build())
+                .channel(Channel.valueOf(d.getChannel()))
                 .seller(Seller.builder().id(d.getSeller()).build())
                 .insurance(Insurance.builder().id(d.getInsurance()).build())
                 .build();

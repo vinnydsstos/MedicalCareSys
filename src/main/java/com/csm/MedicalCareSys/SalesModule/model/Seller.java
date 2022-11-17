@@ -1,6 +1,7 @@
 package com.csm.MedicalCareSys.SalesModule.model;
 
 import com.csm.MedicalCareSys.SalesModule.DTO.SellerDTORequest;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 
 import javax.persistence.*;
@@ -35,6 +36,7 @@ public class Seller {
     @Column(name="PHONE")
     private String phone;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "seller")
     private List<Order> orders;
 
@@ -45,6 +47,8 @@ public class Seller {
                 .name(s.getName())
                 .email(s.getEmail())
                 .phone(s.getPhone())
+                .username(s.getUsername())
+                .password(s.getPassword())
                 .build();
     }
 

@@ -1,6 +1,7 @@
 package com.csm.MedicalCareSys.SalesModule.DTO;
 
 import lombok.Data;
+import org.springframework.lang.Nullable;
 
 import java.io.Serializable;
 import java.time.LocalDate;

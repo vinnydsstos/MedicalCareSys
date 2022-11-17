@@ -9,6 +9,7 @@ import com.csm.MedicalCareSys.SalesModule.model.Seller;
 import com.csm.MedicalCareSys.SalesModule.repository.InsuranceRepository;
 import com.csm.MedicalCareSys.SalesModule.repository.SellerRepository;
 import com.csm.MedicalCareSys.Exceptions.NotFoundException;
+import com.csm.MedicalCareSys.SalesModule.service.InsuranceService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -23,6 +24,9 @@ public class InsuranceController {
 
     @Autowired
     private InsuranceRepository insuranceRepository;
+
+    @Autowired
+    private InsuranceService insuranceService;
 
     @GetMapping("list")
     public List<InsuranceDTOResponse> getAllInsurances(){
@@ -43,8 +47,11 @@ public class InsuranceController {
     @PostMapping
     public InsuranceDTOResponse SaveInsurance(@RequestBody InsuranceDTORequest request) {
         try {
-            return InsuranceDTOResponse.of(insuranceRepository.save(Insurance.of(request)));
+            Insurance insurance = insuranceRepository.save(Insurance.of(request));
+            insuranceService.relateOrderToInsurance(request, insurance);
+            return InsuranceDTOResponse.of(insurance);
         } catch (Exception e) {
+            e.printStackTrace();
             throw new PersistenceException("Error saving the Seller");
         }
     }

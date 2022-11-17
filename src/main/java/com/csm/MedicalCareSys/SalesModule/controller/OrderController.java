@@ -49,7 +49,7 @@ public class OrderController {
         try {
             return OrderDTOResponse.of(
                     orderRepository.save(
-                            orderService.processDataToPersist(request)));
+                            orderService.populate(request)));
         } catch (Exception e) {
             throw new PersistenceException("Error saving the Order");
         }

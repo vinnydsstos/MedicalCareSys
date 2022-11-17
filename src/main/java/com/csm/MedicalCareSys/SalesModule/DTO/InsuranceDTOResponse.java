@@ -17,14 +17,14 @@ public class InsuranceDTOResponse implements Serializable {
     private final UUID id;
     private final String coverage;
     private final Double monthValue;
-    private final Boolean status;
+    private final String status;
 
     public static InsuranceDTOResponse of(Insurance d){
         return InsuranceDTOResponse.builder()
                 .id(d.getId())
-                .coverage(d.getCoverage())
+                .coverage(d.getCoverage().toString())
                 .monthValue(d.getMonthValue())
-                .status(d.getStatus())
+                .status(d.getStatus().toString())
                 .build();
     }
 }
