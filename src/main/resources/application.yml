@@ -18,3 +18,9 @@ spring:
         event:
           merge:
             entity_copy_observer: allow
+
+  rabbitmq:
+    addresses: localhost:5672
+    adminAddresses: http://localhost:15672
+    username: admin
+    password: 123456

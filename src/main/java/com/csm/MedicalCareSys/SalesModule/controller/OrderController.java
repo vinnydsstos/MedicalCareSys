@@ -1,5 +1,6 @@
 package com.csm.MedicalCareSys.SalesModule.controller;
 
+import com.csm.MedicalCareSys.Messaging.service.OrderMessageService;
 import com.csm.MedicalCareSys.SalesModule.DTO.OrderDTORequest;
 import com.csm.MedicalCareSys.SalesModule.DTO.OrderDTOResponse;
 import com.csm.MedicalCareSys.SalesModule.DTO.SellerDTORequest;
@@ -28,8 +29,11 @@ public class OrderController {
     @Autowired
     private OrderService orderService;
 
+    @Autowired
+    private OrderMessageService orderMessageService;
+
     @GetMapping("list")
-    public List<OrderDTOResponse> getAllOrders(){
+    public List<OrderDTOResponse> getAllOrders() {
         return orderRepository.findAll()
                 .stream()
                 .map(OrderDTOResponse::of)
@@ -38,7 +42,7 @@ public class OrderController {
     }
 
     @GetMapping("{id}")
-    public OrderDTOResponse getOrderById(@PathVariable UUID id){
+    public OrderDTOResponse getOrderById(@PathVariable UUID id) {
         return orderRepository.findById(id)
                 .map(OrderDTOResponse::of)
                 .orElseThrow(() -> new NotFoundException("Seller Not Found"));
@@ -47,20 +51,21 @@ public class OrderController {
     @PostMapping
     public OrderDTOResponse SaveOrder(@RequestBody OrderDTORequest request) {
         try {
-            return OrderDTOResponse.of(
-                    orderRepository.save(
-                            orderService.populate(request)));
+            OrderDTOResponse order = OrderDTOResponse.of(
+                    orderRepository.save(orderService.populate(request)));
+            orderMessageService.sendMessage(order);
+            return order;
         } catch (Exception e) {
             throw new PersistenceException("Error saving the Order");
         }
     }
 
     @DeleteMapping("{id}")
-    public String deleteOrder(@PathVariable UUID id){
+    public String deleteOrder(@PathVariable UUID id) {
         try {
             orderRepository.deleteById(id);
             return "Sucesso";
-        }catch (Exception e){
+        } catch (Exception e) {
             throw new PersistenceException("Error deleting Seller");
         }
     }
