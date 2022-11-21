@@ -1,18 +1,12 @@
 package com.csm.MedicalCareSys.MedicalCareModule.controller;
 
-import com.csm.MedicalCareSys.MedicalCareModule.DTO.AddressDTORequest;
-import com.csm.MedicalCareSys.MedicalCareModule.DTO.PatientDTORequest;
-import com.csm.MedicalCareSys.MedicalCareModule.DTO.PatientDTOResponse;
-import com.csm.MedicalCareSys.MedicalCareModule.model.Address;
-import com.csm.MedicalCareSys.MedicalCareModule.model.Patient;
+import com.csm.MedicalCareAttendance.DTO.PatientDTORequest;
+import com.csm.MedicalCareAttendance.Controller.PatientController;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
-import org.mockito.Mockito;
 import org.springframework.boot.test.context.SpringBootTest;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
 class PatientControllerTest {

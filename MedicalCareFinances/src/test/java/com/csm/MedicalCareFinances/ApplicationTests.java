@@ -1,4 +1,4 @@
-package com.csm.medicalcarefinances.MedicalCareFinances;
+package com.csm.MedicalCareFinances;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

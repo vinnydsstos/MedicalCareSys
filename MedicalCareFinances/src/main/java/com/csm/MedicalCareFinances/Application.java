@@ -1,13 +1,13 @@
-package com.csm.medicalcarefinances.MedicalCareFinances;
+package com.csm.MedicalCareFinances;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class MedicalCareFinancesApplication {
+public class Application {
 
 	public static void main(String[] args) {
-		SpringApplication.run(MedicalCareFinancesApplication.class, args);
+		SpringApplication.run(Application.class, args);
 	}
 
 }

@@ -29,6 +29,11 @@
 			<optional>true</optional>
 		</dependency>
 		<dependency>
+			<groupId>org.csm</groupId>
+			<artifactId>MedicalCareSysLib</artifactId>
+			<version>1.0-SNAPSHOT</version>
+		</dependency>
+		<dependency>
 			<groupId>org.projectlombok</groupId>
 			<artifactId>lombok</artifactId>
 			<optional>true</optional>
@@ -43,7 +48,13 @@
 			<artifactId>spring-rabbit-test</artifactId>
 			<scope>test</scope>
 		</dependency>
-	</dependencies>
+        <dependency>
+            <groupId>com.csm.medicalcaresales</groupId>
+            <artifactId>MedicalCareSales</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+            <scope>compile</scope>
+        </dependency>
+    </dependencies>
 
 	<build>
 		<plugins>
